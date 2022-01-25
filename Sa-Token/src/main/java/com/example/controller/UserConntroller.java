@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import io.swagger.annotations.Api;
@@ -43,6 +44,7 @@ public class UserConntroller {
     }
 
     // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
+    @SaCheckLogin //鉴权 是否登录
     @PostMapping("isLogin")
     public String isLogin() {
         String loginId = StpUtil.getLoginId(null);

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 全局异常处理
  */
+//ControllerAdvice 是Spring3.2提供的新注解,它是一个Controller增强器,
+// 可对controller中被 @RequestMapping注解的方法加一些逻辑处理。最常用的就是异常处理
 @ControllerAdvice
 public class GlobalException {
 

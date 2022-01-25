@@ -1,0 +1,62 @@
+server:
+  # \u7AEF\u53E3
+  port: 8081
+  servlet:
+    context-path: /
+
+# Sa-Token\u914D\u7F6E
+sa-token:
+  # token\u540D\u79F0 (\u540C\u65F6\u4E5F\u662Fcookie\u540D\u79F0)
+  token-name: SATOKEN-TEST
+  # token\u6709\u6548\u671F\uFF0C\u5355\u4F4Ds \u9ED8\u8BA430\u5929, -1\u4EE3\u8868\u6C38\u4E0D\u8FC7\u671F
+  timeout: 2592000
+  # token\u4E34\u65F6\u6709\u6548\u671F (\u6307\u5B9A\u65F6\u95F4\u5185\u65E0\u64CD\u4F5C\u5C31\u89C6\u4E3Atoken\u8FC7\u671F) \u5355\u4F4D: \u79D2
+  activity-timeout: -1
+  # \u662F\u5426\u5141\u8BB8\u540C\u4E00\u8D26\u53F7\u5E76\u53D1\u767B\u5F55 (\u4E3Atrue\u65F6\u5141\u8BB8\u4E00\u8D77\u767B\u5F55, \u4E3Afalse\u65F6\u65B0\u767B\u5F55\u6324\u6389\u65E7\u767B\u5F55)
+  is-concurrent: true
+  # \u5728\u591A\u4EBA\u767B\u5F55\u540C\u4E00\u8D26\u53F7\u65F6\uFF0C\u662F\u5426\u5171\u7528\u4E00\u4E2Atoken (\u4E3Atrue\u65F6\u6240\u6709\u767B\u5F55\u5171\u7528\u4E00\u4E2Atoken, \u4E3Afalse\u65F6\u6BCF\u6B21\u767B\u5F55\u65B0\u5EFA\u4E00\u4E2Atoken)
+  is-share: false
+  # token\u98CE\u683C
+  token-style: uuid
+  # \u662F\u5426\u8F93\u51FA\u64CD\u4F5C\u65E5\u5FD7
+  is-log: false
+
+#spring:
+#
+#  #---------------数据库连接配置--------------
+#  datasource:
+#    #数据源类型
+#    type: com.zaxxer.hikari.HikariDataSource
+#    # 用户名
+#    username: dev
+#    # 密码
+#    password: 1qaz@WSXdev
+#    # 连接url
+#    url: jdbc:p6spy:mysql://81.69.231.72:3306/huashu?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&serverTimezone=Asia/Shanghai
+#    # 驱动名称
+#    # 需要调试拦截打印sql 驱动改为p6spy 拦截
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+#
+#    #---------------数据库连接池HikariCP配置--------------
+#    hikari:
+#      #最小空闲连接，默认值10，小于0或大于maximum-pool-size，都会重置为maximum-pool-size
+#      minimum-idle: 10
+#      #最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为minimum-idle的值
+#      maximum-pool-size: 50
+#      #空闲连接超时时间，默认值600000单位毫秒（10分钟），大于等于max-lifetime且max-lifetime>0，会被重置为0；不等于0且小于10秒，会被重置为10秒。
+#      idle-timeout: 600000
+#      # 连接最大存活时间，不等于0且小于30秒，会被重置为默认值30分钟.设置应该比mysql设置的超时时间短
+#      max-lifetime: 1800000
+#      #连接超时时间：毫秒，小于250毫秒，否则被重置为默认值30秒
+#      connection-timeout: 60000
+#      #用于测试连接是否可用的查询语句
+#      connection-test-query: SELECT 1
+
+swagger:
+  basePackage: com.example.controller
+  title: SATOKEN-TEST
+  description: SATOKEN-TEST
+  version: 1.0
+  author: cxh
+  url: http://www.bbdtek.com
+  email: 1078488837@qq.com
