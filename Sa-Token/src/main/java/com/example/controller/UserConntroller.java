@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaCheckRole;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import io.swagger.annotations.Api;
@@ -45,13 +47,14 @@ public class UserConntroller {
 
     // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
     @SaCheckLogin //鉴权 是否登录
+    @SaCheckRole("admin") //角色
     @PostMapping("isLogin")
     public String isLogin() {
         String loginId = StpUtil.getLoginId(null);
 
         return "当前会话是否登录" + loginId + "：" + StpUtil.isLogin();
     }
-
+    @SaCheckPermission("user-add") //权限
     @PostMapping("loginOut")
     public String loginOut(String id) {
         StpUtil.logout(id);

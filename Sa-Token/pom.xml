@@ -34,7 +34,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- Sa-Token 权限认证（Reactor响应式集成） -->
 		<dependency>
 			<groupId>cn.dev33</groupId>
@@ -42,6 +41,12 @@
 			<version>1.28.0</version>
 		</dependency>
 
+		<!-- Sa-Token整合SpringAOP实现注解鉴权 -->
+		<dependency>
+			<groupId>cn.dev33</groupId>
+			<artifactId>sa-token-spring-aop</artifactId>
+			<version>1.28.0</version>
+		</dependency>
 
 		<!--api 文档-->
 		<dependency>
