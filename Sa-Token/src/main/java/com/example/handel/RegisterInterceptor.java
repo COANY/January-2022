@@ -22,17 +22,37 @@ public class RegisterInterceptor implements WebMvcConfigurer {
         registry.addInterceptor(new SaAnnotationInterceptor()).addPathPatterns("/**");
         //登录拦截器
         registry.addInterceptor(new SaRouteInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/doc.html#/**")
+                .excludePathPatterns("/user/doLogin")
+                .excludePathPatterns("/doc.html")
+                .excludePathPatterns("/swagger-resources")
+                .excludePathPatterns("/swagger-resources/**")
+                .excludePathPatterns("/v2/api-docs")
+                .excludePathPatterns("/favicon.ico")
         ;
+//        registry.addInterceptor(new SaRouteInterceptor((request, response, handerl) -> {
+//            // 根据路由划分模块，不同模块不同鉴权
+//            SaRouter.match("/user/**", r -> StpUtil.checkPermission("user"));
+//            SaRouter.match("/admin/**", r -> StpUtil.checkPermission("admin"));
+//            SaRouter.match("/goods/**", r -> StpUtil.checkPermission("goods"));
+//            SaRouter.match("/orders/**", r -> StpUtil.checkPermission("orders"));
+//            SaRouter.match("/notice/**", r -> StpUtil.checkPermission("notice"));
+//            SaRouter.match("/comment/**", r -> StpUtil.checkPermission("comment"));
+//        })).addPathPatterns("/**")
+//                .excludePathPatterns("/user/doLogin")
+//                .excludePathPatterns("/doc.html")
+//                .excludePathPatterns("/swagger-resources")
+//                .excludePathPatterns("/swagger-resources/**")
+//                .excludePathPatterns("/v2/api-docs")
+//                .excludePathPatterns("/favicon.ico")
+//        ;
     }
 
     //springboot2.x 静态资源在自定义拦截器之后无法访问的解决方案
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**") //代表以什么样的请求路径访问静态资源
-                .addResourceLocations("classpath:/static/")
-                .addResourceLocations("classpath:/templates/");
-//
+        registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 
     }
 }

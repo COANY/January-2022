@@ -24,12 +24,8 @@ public class GlobalException {
     @ExceptionHandler
     public Result handlerException(Exception e, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        // 打印堆栈，以供调试
-        System.out.println("全局异常---------------");
-        e.printStackTrace();
-
         // 不同异常返回不同状态码
+        e.printStackTrace();
         Result aj = null;
         if (e instanceof NotLoginException) {	// 如果是未登录异常
             NotLoginException ee = (NotLoginException) e;
