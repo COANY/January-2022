@@ -28,6 +28,7 @@ public class RegisterInterceptor implements WebMvcConfigurer {
                 .excludePathPatterns("/swagger-resources/**")
                 .excludePathPatterns("/v2/api-docs")
                 .excludePathPatterns("/favicon.ico")
+                .excludePathPatterns("/webjars/**")
         ;
 //        registry.addInterceptor(new SaRouteInterceptor((request, response, handerl) -> {
 //            // 根据路由划分模块，不同模块不同鉴权
