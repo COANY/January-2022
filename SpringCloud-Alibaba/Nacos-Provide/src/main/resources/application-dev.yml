@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: nacos-provider-v1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+
+swagger:
+  basePackage: com.example.nacos.controller
+  title: NACOS
+  description: NACOS-TEST
+  version: 1.0
+  author: cxh
+  url: http://www.bbdtek.com
+  email: 1078488837@qq.com

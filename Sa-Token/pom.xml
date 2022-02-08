@@ -72,6 +72,7 @@
 <!--			</plugin>-->
 <!--		</plugins>-->
 <!--	</build>-->
+	<!--  分开打包-->
 	<build>
 		<plugins>
 			<plugin>

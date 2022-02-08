@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: dev #开发
+#    active: online #线上环境
+#    active: servloca #线上环境
+# startup.cmd -m standalone nacos非集群启动命令 （windows）

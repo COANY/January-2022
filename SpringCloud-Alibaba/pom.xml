@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example.alibaba</groupId>
+	<artifactId>alibaba</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+	<description>Spring-Cloud-Alibaba-Server</description>
+
+	<!-- 子模块  -->
+	<modules>
+		<module>Nacos-Provide</module>
+	</modules>
+
+	<!-- 主版本管理  -->
+	<properties>
+		<java.version>1.8</java.version>
+		<spring.boot.version>2.3.7.RELEASE</spring.boot.version>
+		<hutool.version>5.6.3</hutool.version>
+		<lombok.version>1.18.8</lombok.version>
+		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+		<spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+		<knife4j.version>2.0.8</knife4j.version>
+
+	</properties>
+
+	<dependencies>
+		<!--springboot-web-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--引入lombok工具-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<version>${lombok.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- spring cloud alibaba 2.1.0-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+			<version>${spring-cloud-alibaba.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		<!--工具类-->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>${knife4j.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.3.2.RELEASE</version>
+				<!--<configuration>
+                    &lt;!&ndash; 指定该服务的启动类为全局的唯一入口 &ndash;&gt;
+                    <mainClass>com.koalacloud.cloud.action.StartActionApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>-->
+				<executions>
+					<execution>
+						<goals>
+							<!--可以把依赖的包都打包到生成的Jar包中-->
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
