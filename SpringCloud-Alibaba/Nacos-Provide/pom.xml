@@ -9,10 +9,16 @@
     </parent>
     <groupId>com.example.nacos</groupId>
     <artifactId>Nacos-Provide</artifactId>
-    <description>Nacos服务提供方</description>
+    <description>Nacos服务提供方V1</description>
+
 
     <dependencies>
-
+        <!-- nacos服务注册 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>${nacos-discovery.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,9 +1,9 @@
 server:
-  port: 9001
+  port: 9002
 
 spring:
   application:
-    name: nacos-provider
+    name: nacos-provider-v2
   cloud:
     nacos:
       discovery:

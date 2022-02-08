@@ -13,10 +13,10 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 @Slf4j
 @EnableDiscoveryClient
-public class NacosApplication {
+public class Nacosprovicev2Application {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(NacosApplication.class, args);
+		ConfigurableApplicationContext applicationContext = SpringApplication.run(Nacosprovicev2Application.class, args);
 		ConfigurableEnvironment environment = applicationContext.getEnvironment();
 		String ipAddress = "127.0.0.1";
 		try {
@@ -26,12 +26,12 @@ public class NacosApplication {
 		}
 		String port = environment.getProperty("server.port");
 		String active = environment.getProperty("spring.profiles.active");
-		log.info("\n----------------------------------------------------------\n\t" +
-				"Application is running! Access URLs:\n\t" +
-				"Doc: \t\thttp://" + ipAddress + ":" + port + "/" + "doc.html\n\t" +
-				"spring-profiles-active: \t\t" + active + "\n\t" +
-				"Nacos-Provide 服务提供方启动成功"+"\n\t" +
-				"----------------------------------------------------------");
+//		log.info("\n----------------------------------------------------------\n\t" +
+//				"Application is running! Access URLs:\n\t" +
+//				"Doc: \t\thttp://" + ipAddress + ":" + port + "/" + "doc.html\n\t" +
+//				"spring-profiles-active: \t\t" + active + "\n\t" +
+//				"Nacos-Provide 服务提供方启动成功"+"\n\t" +
+//				"----------------------------------------------------------");
 	}
 
 }

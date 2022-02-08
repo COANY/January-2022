@@ -13,18 +13,20 @@
 	<!-- 子模块  -->
 	<modules>
 		<module>Nacos-Provide</module>
+		<module>Nacos-Provide-V2</module>
 	</modules>
 
 	<!-- 主版本管理  -->
 	<properties>
 		<java.version>1.8</java.version>
-		<spring.boot.version>2.3.7.RELEASE</spring.boot.version>
 		<hutool.version>5.6.3</hutool.version>
 		<lombok.version>1.18.8</lombok.version>
+		<!-- boot cloud cloud-alibaba组合-->
+		<spring.boot.version>2.3.2.RELEASE</spring.boot.version>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+		<nacos-discovery.version>2.2.6.RELEASE</nacos-discovery.version>
 		<knife4j.version>2.0.8</knife4j.version>
-
 	</properties>
 
 	<dependencies>
@@ -51,19 +53,38 @@
 			<type>pom</type>
 			<scope>import</scope>
 		</dependency>
+		<!-- spring cloud  2.1.0-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-dependencies</artifactId>
+			<version>${spring-cloud.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
 		<!--工具类-->
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
 			<version>${hutool.version}</version>
 		</dependency>
-
+		<!--swagger-->
 		<dependency>
 			<groupId>com.github.xiaoymin</groupId>
 			<artifactId>knife4j-spring-boot-starter</artifactId>
 			<version>${knife4j.version}</version>
 		</dependency>
-
+		<!--swagger-->
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.26</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
