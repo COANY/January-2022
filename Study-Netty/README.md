@@ -1,3 +1,7 @@
 # Netty
 
-一开始有一个执行器EventExcutor
+一开始有一个执行器EventExecutorGroup 继承 ScheduledExecutorService 那么他就拥有了一些调度执行的功能
+且通过里面的next方法获取这个组里面的一个EventExecutor,EventExecutor是这个组里面一个专门执行
+任务的一个执行体,同时EventExecutor又是一个特殊的EventExecutorGroup(一个人也是一个组),为什么
+引入EventLoopGroup(继承EventExecutorGroup),有时候我们要注册通道,并且我们需要将这些线程粘起来
+通过next循环这个线程数组
