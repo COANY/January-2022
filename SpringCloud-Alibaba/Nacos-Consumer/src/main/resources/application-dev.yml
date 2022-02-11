@@ -1,20 +1,18 @@
-server:
-  port: 9101
 
-spring:
-  application:
-    name: nacos-consumer
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-server-url:
-  nacos-user-service: http://nacos-provider
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 swagger:
   basePackage: com.example.nacos.controller

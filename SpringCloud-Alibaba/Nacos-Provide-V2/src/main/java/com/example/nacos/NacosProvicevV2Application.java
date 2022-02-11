@@ -13,10 +13,10 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 @Slf4j
 @EnableDiscoveryClient
-public class NacosApplication {
+public class NacosProvicevV2Application {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(NacosApplication.class, args);
+		ConfigurableApplicationContext applicationContext = SpringApplication.run(NacosProvicevV2Application.class, args);
 		ConfigurableEnvironment environment = applicationContext.getEnvironment();
 		String ipAddress = "127.0.0.1";
 		try {

@@ -45,6 +45,8 @@
 			<version>${lombok.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		<!--                              Spring Cloud Alibaba                                     -->
+
 		<!-- spring cloud alibaba 2.1.0-->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
@@ -61,6 +63,22 @@
 			<type>pom</type>
 			<scope>import</scope>
 		</dependency>
+		<!-- nacos服务注册 -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<version>${nacos-discovery.version}</version>
+		</dependency>
+		<!-- Nacos config -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			<version>${nacos-discovery.version}</version>
+		</dependency>
+		<!--                              Spring Cloud Alibaba                                     -->
+
+
+
 		<!--工具类-->
 		<dependency>
 			<groupId>cn.hutool</groupId>

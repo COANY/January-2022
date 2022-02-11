@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @RestController
-    public class EchoController {
-        @GetMapping(value = "/echo/{string}")
-        public String echo(@PathVariable String string) {
-            return "Hello Nacos Discovery " + string;
-        }
+    @GetMapping(value = "/echo/{string}")
+    public String echo(@PathVariable String string) {
+        return "Hello Nacos Discovery " + string;
     }
+
 }
