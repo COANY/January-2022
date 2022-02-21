@@ -95,5 +95,34 @@ ServerBootstrap(netty启动类) 启动流程:
                                     ps：我要放到netty的线程池中去执行，但是我又不得不让他在外面先执行,所以就添加一个initChannel去执行
                 3.ChannelFuture regFuture = config().group().register(channel);
                                                     (boos的group)  
-                                                     (MultithreadEventLoopGroup的register 虽然它是一个线程,但是它是一个组,  )
-                                 1.MultithreadEventLoopGroup.register()→→SingleThreadEventLoop.register()            
+                                                     (MultithreadEventLoopGroup的register 虽然它是一个线程,但是它是一个组,所以是MultithreadEventLoopGroup不是ingleThreadEventLoop )
+                                 1.MultithreadEventLoopGroup.register()→→SingleThreadEventLoop.register()
+                                 -->this.register((ChannelPromise)(new DefaultChannelPromise(channel, this)))
+                                 -->new DefaultChannelPromise this就是注册的线程(boss 线程)
+                                 -->promise.channel().unsafe().register(this, promise);
+                                 -->register(EventLoop eventLoop, final ChannelPromise promise) {
+                                    if (eventLoop.inEventLoop()) //当前线程是否是事件循环组
+                                        this.register0(promise);
+                                    } else {//不是的话 就放在boss的线程里面执行
+                                       try {
+                                             eventLoop.execute(new Runnable() {
+                                                public void run() {
+                                                AbstractUnsafe.this.register0(promise);}
+                                             });
+                                           } 
+                                    }
+                                 }
+                                 -->register0(promise)↓
+                                    void register0(ChannelPromise promise) {
+                                    doRegister(){//注册selector
+                                    ps:selector中的selectionKey 和channel双向绑定  selector向内核中放内核中感兴趣的事件集有(四种类型in out erroe hup 没有0) 处理
+                                    //此时selector永远工作不了 需要等待开启  修改事件集的类型
+                                    this.selectionKey = this.javaChannel().register(this.eventLoop().unwrappedSelector(), 0, this);
+                                    }
+                                    this.safeSetSuccess(promise);-->promise.trySuccess() //回调 Channel channel = sbs.bind().sync().channel();
+                                    //观察者模式 当被观察者在xx之前或之后触发了xxx  去通知观察者回调观察者的方法
+                                    pipeline.invokeHandlerAddedIfNeeded();初始化ChannelInitializer-->可以执行LoggingHandler和接收连接的时候执行ServerBootstrapAcceptor
+                                    safeSetSuccess(promise);回调 唤醒sbs.bind().sync()
+                                    pipeline.fireChannelRegistered();
+                                    }
+                4.doBind0(regFuture, channel, localAddress, promise);

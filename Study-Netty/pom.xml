@@ -39,7 +39,11 @@
 			<artifactId>netty-all</artifactId>
 			<version>4.1.20.Final</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
