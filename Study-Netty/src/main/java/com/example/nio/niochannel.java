@@ -34,7 +34,7 @@ public class niochannel {
         channel.read(byteBuffer);
         byteBuffer.flip();
         System.out.println(new String(byteBuffer.array()));
-        channel.close();
+        channel.close();//
     }
 
     @SneakyThrows
