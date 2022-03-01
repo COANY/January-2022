@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -132,7 +131,7 @@ public class niochannel {
                             //转发给其他客户端
                             buffer.flip();
                             String mag = new String(buffer.array(), 0, buffer.remaining());
-                                System.out.println("发消息了"+mag);
+                            System.out.println("发消息了" + mag);
                             for (SelectionKey selectionKey : selector.keys()) {
                                 Channel channel = selectionKey.channel();
                                 if (channel instanceof SocketChannel && channel != sc) {
@@ -166,19 +165,17 @@ public class niochannel {
             @SneakyThrows
             @Override
             public void run() {
-                while (true) {
-                    while (selector.select() > 0) {
-                        Iterator<SelectionKey> iterator = selector.keys().iterator();
-                        while (iterator.hasNext()) {
-                            SelectionKey key = iterator.next();
-                            if (key.isReadable()) {
-                                SocketChannel channel = (SocketChannel) key.channel();
-                                ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-                                channel.read(byteBuffer);
-                                byteBuffer.flip();
-                                System.out.println(new String(byteBuffer.array(), 0, byteBuffer.remaining()).trim());
-                            }
+                while (selector.select() > 0) {
+                    Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+                    while (iterator.hasNext()) {
+                        SelectionKey key = iterator.next();
+                        if (key.isReadable()) {
+                            SocketChannel channel = (SocketChannel) key.channel();
+                            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+                            channel.read(byteBuffer);
+                            System.out.println(new String(byteBuffer.array()).trim());
                         }
+                        iterator.remove();
                     }
                 }
             }
