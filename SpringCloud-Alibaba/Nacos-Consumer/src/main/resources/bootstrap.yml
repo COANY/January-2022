@@ -11,6 +11,8 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yaml
+        group: DEFAULT_GROUP   # nacos 的group
+#        namespace: 21321432hjkjsdfs #命名空间id
   # config 得dataId 配置
   #${spring.application.name}-${spring.cloud.active}.${spring.cloud.nacos.config.file-extension}
   # dataId --->  nacos-consumer-dev.yaml
