@@ -53,7 +53,7 @@ sa-token:
 #      connection-test-query: SELECT 1
 
 swagger:
-  basePackage: com.example.controller
+  basePackage: com.example.sentinel.controller
   title: SATOKEN-TEST
   description: SATOKEN-TEST
   version: 1.0

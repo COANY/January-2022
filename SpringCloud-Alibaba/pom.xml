@@ -28,6 +28,7 @@
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
 		<nacos-discovery.version>2.2.6.RELEASE</nacos-discovery.version>
+		<sentinel.version>2.2.6.RELEASE</sentinel.version>
 		<knife4j.version>2.0.8</knife4j.version>
 	</properties>
 
@@ -47,8 +48,9 @@
 			<version>${lombok.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		<!--                              Spring Cloud Alibaba                                     -->
 
+
+		<!--                              Spring Cloud Alibaba                                     -->
 		<!-- spring cloud alibaba 2.1.0-->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
@@ -76,6 +78,12 @@
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
 			<version>${nacos-discovery.version}</version>
+		</dependency>
+		<!-- sentinel -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+			<version>${sentinel.version}</version>
 		</dependency>
 		<!--                              Spring Cloud Alibaba                                     -->
 

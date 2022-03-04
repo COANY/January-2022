@@ -1,9 +1,9 @@
 server:
-  port: 9101
+  port: 9500
 
 spring:
   application:
-    name: nacos-consumer
+    name: sentinel
   cloud:
     nacos:
       discovery:
@@ -12,16 +12,17 @@ spring:
         server-addr: localhost:8848
         file-extension: yaml
         group: DEFAULT_GROUP   # nacos 的group
-#        namespace: 21321432hjkjsdfs #命名空间id
+    sentinel:
+      transport:
+        #sentinel前端展示 默认端口8080
+        dashboard: localhost:8080
+        #后台监控端口 
+        port: 8719
+
+  #        namespace: 21321432hjkjsdfs #命名空间id
   # config 得dataId 配置
   #${spring.application.name}-${spring.cloud.active}.${spring.cloud.nacos.config.file-extension}
   # dataId --->  nacos-consumer-dev.yaml
-  sentinel:
-    transport:
-      #sentinel前端展示 默认端口8080
-      dashboard: localhost:8080
-      #后台监控端口
-      port: 8719
 
 server-url:
   nacos-user-service: http://nacos-provider

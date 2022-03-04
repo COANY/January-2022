@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.sentinel.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

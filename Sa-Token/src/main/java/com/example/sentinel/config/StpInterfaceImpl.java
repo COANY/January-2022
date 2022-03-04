@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.sentinel.config;
 
 import cn.dev33.satoken.stp.StpInterface;
 import org.springframework.stereotype.Component;

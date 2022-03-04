@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.sentinel.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;

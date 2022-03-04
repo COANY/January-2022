@@ -1,0 +1,8 @@
+swagger:
+  basePackage: com.example.sentinel.controller
+  title: NACOS
+  description: NACOS-TEST
+  version: 1.0
+  author: cxh
+  url: http://www.bbdtek.com
+  email: 1078488837@qq.com

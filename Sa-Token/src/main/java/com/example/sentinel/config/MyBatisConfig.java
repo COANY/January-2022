@@ -1,4 +1,4 @@
-//package com.example.config;
+//package com.example.sentinel.config;
 //
 //import com.baomidou.mybatisplus.annotation.DbType;
 //import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
