@@ -13,8 +13,7 @@ Multi(多线程) thread EventExecutorGroup  继承 AbstractEventExecutorGroup
 # 实现了shutdownGracefully()方法
 包含 EventExecutor[] children 
      Set<EventExecutor> readonlyChildren; (只读 底层禁用增删改方法)
-     AtomicInteger terminatedChildren (监听器)  AtomicInteger terminatedChildren、
-     AtomicInteger terminatedChildren
+     AtomicInteger terminatedChildren (监听器) 
      EventExecutorChooserFactory.EventExecutorChooser chooser (选择器)  :2的倍数的时候  index&length-1
                                                                         :不是2个倍数    Math.abs(index&length) 防止符号位溢出
      ps: 创建线程使用的工厂 默认是直接开启一个线程
@@ -68,6 +67,42 @@ PriorityQueue<ScheduledFutureTask<?>> scheduledTaskQueue;    三： 周期任务
 ServerBootstrap(netty启动类) 启动流程:
 前置  初始化 boos和worker  channel  handler childHandler
 1.绑定端口启动  doBind()：流程
+源码:
+private ChannelFuture doBind(final SocketAddress localAddress) {
+        final ChannelFuture regFuture = initAndRegister(); //异步添加监听器
+        final Channel channel = regFuture.channel();
+        if (regFuture.cause() != null) {
+            return regFuture;
+        }
+        if (regFuture.isDone()) {
+            // At this point we know that the registration was complete and successful.
+            ChannelPromise promise = channel.newPromise();
+            doBind0(regFuture, channel, localAddress, promise);
+            return promise;
+        } else {
+            // Registration future is almost always fulfilled already, but just in case it's not.
+            final PendingRegistrationPromise promise = new PendingRegistrationPromise(channel);
+            regFuture.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    Throwable cause = future.cause();
+                    if (cause != null) {
+                        // Registration on the EventLoop failed so fail the ChannelPromise directly to not cause an
+                        // IllegalStateException once we try to access the EventLoop of the Channel.
+                        promise.setFailure(cause);
+                    } else {
+                        // Registration was successful, so set the correct executor to use.
+                        // See https://github.com/netty/netty/issues/2586
+                        promise.registered();
+                        doBind0(regFuture, channel, localAddress, promise);
+                    }
+                }
+            });
+            return promise;
+        }
+    }
+    
+说明:    
                 1.channel = channelFactory.newChannel();
                             channelFactory由初始化channel的时候创建的→→channelFactory(new ReflectiveChannelFactory<C>(channelClass))
                             而newChannel 是通过反射创建的channel  目的是为了解耦 否则就要引入channel包 
